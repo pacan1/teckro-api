@@ -1,0 +1,112 @@
+[
+  {
+    "line": 3,
+    "elements": [
+      {
+        "start_timestamp": "2020-07-20T19:07:37.214Z",
+        "before": [
+          {
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "void com.hotel.steps.HotelSteps.initialise(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "line": 40,
+        "name": "Book a room from date 2022-01-15 for 7 days",
+        "description": "",
+        "id": "verify-the-expect-response-is-returned-for-the-api-when-a-get-request-is-made-to-check-room-availability.;book-a-room-from-date-\u003ccheckin-date\u003e-for-\u003cnum-of-days\u003e-days;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 1094000000,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "a date 2022-01-15 and number of days 7 is requested",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2022-01-15",
+                  "offset": 7
+                },
+                {
+                  "val": "7",
+                  "offset": 37
+                }
+              ],
+              "location": "com.hotel.steps.HotelSteps.\u003cinit\u003e(HotelSteps.kt:93)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "line": 33,
+            "name": "the response is returned with the expected response code 200",
+            "match": {
+              "arguments": [
+                {
+                  "val": "200",
+                  "offset": 57
+                }
+              ],
+              "location": "com.hotel.steps.HotelSteps.\u003cinit\u003e(HotelSteps.kt:99)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "error_message": "java.lang.AssertionError: Returned totalPrice is unexpected\nExpected: is \u003c320\u003e\n     but: was \u003c900\u003e\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:18)\n\tat com.hotel.steps.HotelSteps$5.accept(HotelSteps.kt:149)\n\tat ✽.the booking is made for 7 days from date 2022-01-15(file:///Users/paulamccann/sandbox/teckro-api/src/test/resources/Hotel.feature:34)\n",
+              "duration": 330000000,
+              "status": "failed"
+            },
+            "line": 34,
+            "name": "the booking is made for 7 days from date 2022-01-15",
+            "match": {
+              "arguments": [
+                {
+                  "val": "7",
+                  "offset": 24
+                },
+                {
+                  "val": "2022-01-15",
+                  "offset": 41
+                }
+              ],
+              "location": "com.hotel.steps.HotelSteps.\u003cinit\u003e(HotelSteps.kt:128)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regression"
+          }
+        ]
+      }
+    ],
+    "name": "Verify the expect response is returned for the API when a GET request is made to check room availability.",
+    "description": "  As a hotel receptionist\n  I would like to check how many rooms are available on a certain date\n  So that I can make bookings",
+    "id": "verify-the-expect-response-is-returned-for-the-api-when-a-get-request-is-made-to-check-room-availability.",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/Hotel.feature",
+    "tags": [
+      {
+        "name": "@regression",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
