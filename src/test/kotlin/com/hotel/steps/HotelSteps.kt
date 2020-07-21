@@ -48,6 +48,14 @@ class HotelSteps() : En  {
             .thenReturn()
     }
 
+    private fun bookARoomWrongTypes(numOfDays: Int?, checkInDate: String): Response {
+        return RestAssured.given()
+            .body(createRequestBodyNumOfDaysAsString(numOfDays, checkInDate))
+            .contentType(ContentType.JSON)
+            .post(bookRoomApi)
+            .thenReturn()
+    }
+
     private fun createRequestBody(numOfDays: Int, checkInDate: String): String {
         return """
         {
@@ -58,7 +66,7 @@ class HotelSteps() : En  {
 
     }
 
-    private fun createRequestBodyNumOfDaysAsString(numOfDays: Int, checkInDate: String): String {
+    private fun createRequestBodyNumOfDaysAsString(numOfDays: Int?, checkInDate: String?): String {
         return """
         {
             "numOfDays": "$numOfDays",
@@ -71,14 +79,25 @@ class HotelSteps() : En  {
     private fun calculatePrice(startDay: Int, numOfDays: Int): Int {
         var totalCost = 0
         var dailyCost: Int
-        for (day in startDay..numOfDays) {
-            dailyCost = 100 + (day * 10)
+
+        var end = (startDay + numOfDays) - 1
+        // mon: 1 - num of days: 3 , loop (1,2,3)
+        // sat: 6 - num of days: 2, loop (6,7)
+        for (day in startDay..end) {
+            dailyCost = 100 + ((day %7) * 10)
             totalCost += dailyCost
             println("Daily: $dailyCost")
             println("Total: $totalCost")
         }
-        println("TotalCost::: $totalCost - 10")
-        return totalCost - 10
+        println("TotalCost::: $totalCost")
+        // Bug in code subtracts 10 at this point
+        return totalCost
+    }
+
+    private fun calculateIt(dayOfWeek: Int, existingCost: Int): Int {
+        var dailyCost = 100 + (dayOfWeek * 10)
+        totalCost = dailyCost + existingCost
+        return totalCost
     }
 
 
@@ -92,6 +111,18 @@ class HotelSteps() : En  {
 
             Given("^a date (.*) and number of days (.*) is requested$") { checkInDate: String, numOfDays: Int ->
                 response = bookARoom(numOfDays, checkInDate)
+                println(response.body.prettyPeek())
+
+            }
+
+            Given("^a date (.*) with no number of days is requested$") { checkInDate: String ->
+                response = bookARoomWrongTypes(null, checkInDate)
+                println(response.body.prettyPeek())
+
+            }
+
+            Given("^a date (.*) with invalid number of days (.*)$") { checkInDate: String, numOfDays: Int ->
+                response = bookARoomWrongTypes(numOfDays, checkInDate)
                 println(response.body.prettyPeek())
 
             }
@@ -130,9 +161,10 @@ class HotelSteps() : En  {
 
                 val expectedEndDate = LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse(checkInDate))
                     .plusDays(numOfDays)
-                val dayOfWeek = LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse(checkInDate)).dayOfWeek.value
-                println("Day of week $dayOfWeek")
-                totalCost = calculatePrice(dayOfWeek, numOfDays.toInt())
+                val startBookingDayOfWeek = LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse(checkInDate)).dayOfWeek.value
+                println("Day of week booking starts $startBookingDayOfWeek")
+
+                totalCost = calculatePrice(startBookingDayOfWeek, numOfDays.toInt())
 
                 assertThat(
                     "Returned checkInDate is unexpected",

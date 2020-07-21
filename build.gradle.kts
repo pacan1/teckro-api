@@ -73,8 +73,6 @@ dependencies {
 
     implementation("org.awaitility:awaitility-kotlin:4.0.2")
 
-//    implementation(project(":generated-client"))
-
 }
 
 cucumber {
