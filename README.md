@@ -25,10 +25,6 @@ open file:///$projectDir/build/test-report/html/cucumber-html-reports/overview-f
 # Pass Rate
 <img width="370" alt="sample-cucumber-console-output" src="https://user-images.githubusercontent.com/22344537/88046161-8d2eea00-cb47-11ea-9603-7062325db0ef.png">
 
-18 Scenarios (16 failed, 2 passed)
-
-54 Steps (16 failed, 7 skipped, 31 passed)
-
 Only 2 tests are passing due to issues highlighted below. 
 If the bugs were fixed, tests would need some refactor around error handling (in response body) to ensure the correct
 error messages were expected / received.
