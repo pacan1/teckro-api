@@ -26,13 +26,6 @@ class HotelSteps() : En  {
         this.scenario = scenario
     }
 
-//    private fun checkAvailability(date: LocalDate): Response {
-//
-//        return RestAssured.given()
-//            .baseUri(checkAvailabilityApi)
-//            .get(date.toString()).thenReturn()
-//    }
-
     private fun checkAvailability(date: String): Response {
 
         return RestAssured.given()
