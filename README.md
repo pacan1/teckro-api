@@ -14,6 +14,9 @@ From the command line run `gradlew generateCucumberReports`
 This task will generate a html file that can be opened in a browser 
 Report Location: file:///$projectDir/build/test-report/html/cucumber-html-reports/overview-features.html
 
+# view a report in the browser
+open file:///$projectDir/build/test-report/html/cucumber-html-reports/overview-features.html
+
 # Pass Rate
 18 Scenarios (16 failed, 2 passed)
 
