@@ -19,7 +19,7 @@ This task will generate a html file that can be opened in a browser Report Locat
 
 open file:///$projectDir/build/test-report/html/cucumber-html-reports/overview-features.html
 
-[Sample Report](docs/images/sample-report.png)
+<img width="1672" alt="sample-report" src="https://user-images.githubusercontent.com/22344537/88045745-eba79880-cb46-11ea-8f2c-60b94244088a.png">
 
 
 # Pass Rate
