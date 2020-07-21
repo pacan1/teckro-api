@@ -1,0 +1,12 @@
+.idea
+build/
+logs
+target
+*.iml
+*.log
+.kotlintest
+.history/
+**/.DS_Store
+.DS_Store
+.gradle
+!gradle-wrapper.jar
