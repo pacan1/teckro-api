@@ -2,6 +2,9 @@
 Test Hotel Availability and Booking API
 
 # To Run the Test Suite
+## Requirements
+Java 8
+
 From the gradle menu choose task `cucumber`
 
 From the command line run `gradlew cucumber`
