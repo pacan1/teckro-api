@@ -73,6 +73,8 @@ dependencies {
 
     implementation("org.awaitility:awaitility-kotlin:4.0.2")
 
+    implementation("com.github.noconnor:junitperf:1.16.0")
+
 }
 
 cucumber {
@@ -97,6 +99,6 @@ cucumberReports {
 }
 
 tasks.withType<Test> {
-    isEnabled = false
+    isEnabled = true
     outputs.upToDateWhen { false }
 }

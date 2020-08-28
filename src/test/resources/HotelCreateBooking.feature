@@ -14,7 +14,7 @@ Feature: Verify the expected response is returned from the API when a POST reque
       | 2022-01-10    | 3           |  200                    |
       | 2021-06-30    | 10          |  200                    |
       | 2021-06-30    | 1           |  200                    |
-      | 2022-01-15    | 2           |  200                    |
+      | 2022-01-16    | 10          |  200                    |
 
   Scenario Outline: Negative Tests: Book a room from date <checkin date> for <num of days> days
     Given a date <checkin date> and number of days <num of days> is requested
