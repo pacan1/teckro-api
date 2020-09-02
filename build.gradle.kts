@@ -22,12 +22,7 @@ plugins {
 }
 
 repositories {
-    maven("https://tixartifactory.jfrog.io/tixartifactory/gradle-dev/") {
-        credentials {
-            username = System.getenv("ARTIFACTORY_USR")
-            password = System.getenv("ARTIFACTORY_PSW")
-        }
-    }
+    maven("https://repo1.maven.org/maven2/") {}
     mavenLocal()
 }
 
