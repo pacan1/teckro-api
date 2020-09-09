@@ -7,11 +7,14 @@ setHeadlessWhen(process.env.HEADLESS);
 exports.config = {
   tests: 'bookin_test.js/*_test.js',
   output: './output',
+  multiple: {
+    multibrowser: ["firefox", "chromium", "webkit"]
+  },
   helpers: {
     Playwright: {
       url: 'http://localhost:4200/',
       show: true,
-      browser: 'firefox'
+      // browser: 'firefox'
     }
   },
   include: {
@@ -26,6 +29,14 @@ exports.config = {
     },
     screenshotOnFail: {
       enabled: true
+    },
+    rerun: {
+      minSuccess: 1,
+      maxReruns: 2
+    },
+    allure: {
+      outputDir: './output',
+      enableScreenshotDiffPlugin: true
     }
   }
 }
