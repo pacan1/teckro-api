@@ -1,11 +1,14 @@
 Feature('bookRoom');
 
+Before((I) => {
+    I.amOnPage('/')
+});
+
 Scenario('Check a date returns number of available days', (I) => {
     const today = Date();
     const parsed_date = formatDate(today)
     console.log("parsed date " + parsed_date);
     
-    I.amOnPage('/')
     I.see('Check Availability')
     I.click('body > app-root > div > div.room-availabilty > div:nth-child(2) > mat-form-field > div > div.mat-form-field-flex > div');
     I.type(parsed_date)
@@ -13,17 +16,16 @@ Scenario('Check a date returns number of available days', (I) => {
     I.see('\"rooms_available\": 10,');
 });
 
-Scenario('test something', (I) => {
+Scenario('Another Test here', (I) => {
     const today = Date();
     const parsed_date = formatDate(today)
     console.log("parsed date " + parsed_date);
     
-    I.amOnPage('/')
     I.see('Check Availability')
     I.click('body > app-root > div > div.room-availabilty > div:nth-child(2) > mat-form-field > div > div.mat-form-field-flex > div');
     I.type(parsed_date)
     I.click('Check');
-    I.see('nothing');
+    // I.see('nothing');
 });
 
 
