@@ -5,10 +5,12 @@ const { setHeadlessWhen } = require('@codeceptjs/configure');
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: 'bookin_test.js/*_test.js',
+  tests: 'bookin_test/*_test.js',
   output: './output',
   multiple: {
-    multibrowser: ["firefox", "chromium", "webkit"]
+    multibrowser: {
+      browsers: ["firefox", "chrome", "webkit"]
+    }
   },
   helpers: {
     Playwright: {
